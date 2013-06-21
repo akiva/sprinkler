@@ -3,7 +3,7 @@
 ## What is it?
 
 This is a collection of [Sprinkle][1] recipes to use for your own
-server stacks. For more information, read [An introduction to Sprinkle][2]
+server stacks.
 
 ## Usage
 
@@ -33,9 +33,10 @@ fill in yours accordingly.
 
 This Sprinkle stack owes a lot to:
 
-- [The Spritz Sprinkle Collection by Stuart Ellis][4]
-- [The Rails Sprinkle Stack by Jonas Grimfelt][5]
-- [Sprinkle-Packages by Mingalar][6]
+- [Plymouth Sprinkle Cookbook][2]
+- [The Spritz Sprinkle Collection by Stuart Ellis][3]
+- [The Rails Sprinkle Stack by Jonas Grimfelt][4]
+- [Sprinkle-Packages by Mingalar][5]
 
 ## Contact
 
@@ -67,8 +68,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [1]: https://github.com/crafterm/sprinkle/ "Sprinkle"
-[2]: http://redartisan.com/2008/5/27/sprinkle-intro "Sprinkle introduction"
-
-[4]: https://github.com/stuartellis/spritz "Spritz Sprinkle Collection"
-[5]: https://github.com/grimen/sprinkle-stack "Rails Sprinkle Stack"
-[6]: https://github.com/mingalar/sprinkle-packages "Sprinkle Packages"
+[2]: https://github.com/plymouthsoftware/sprinkle-cookbook "Plymouth Sprinkle Cookbook"
+[3]: https://github.com/stuartellis/spritz "Spritz Sprinkle Collection"
+[4]: https://github.com/grimen/sprinkle-stack "Rails Sprinkle Stack"
+[5]: https://github.com/mingalar/sprinkle-packages "Sprinkle Packages"
