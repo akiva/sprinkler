@@ -1,0 +1,110 @@
+set nocompatible
+set background=dark
+set nobackup
+set nowritebackup
+set noswapfile
+set history=1000
+set undolevels=1000
+set ignorecase
+set smartcase
+set hidden
+set autoread
+set showcmd
+set laststatus=2
+set showmode
+set modeline
+set sm
+set ruler
+set title
+
+if version >= 703
+  set undofile
+  set undodir=/tmp
+endif
+
+" Syntax
+syntax enable
+syntax on
+
+" Encoding
+set encoding=utf8
+set ffs=unix
+
+" Automatically detect file types
+filetype on
+filetype plugin indent on
+
+" Line numbering
+set number
+
+" Formatting
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set expandtab
+set smarttab
+set shiftround
+set cinwords=if,else,while,do,for,switch,case
+set cindent
+set backspace=start,eol,indent
+
+" No beeping
+set visualbell
+set noerrorbells
+
+" Highlight search
+set incsearch
+set hlsearch
+
+" Show other possibilites at tab completion
+set wildmenu
+set wildignore=*.swp,*.bak
+
+" Maps autocomplete to tab
+imap <Tab> <C-N>
+
+" Visual Settings
+highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
+match LiteralTabs /\s\  /
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/
+
+" Only do this part when compiled with support for autocommands.
+if has('autocmd')
+
+  " Clear trailing whitespace on save
+  autocmd BufWritePre * :%s/\s\+$//e
+
+  " When vimrc is edited, reload it
+  autocmd! bufwritepost vimrc source ~/.vimrc
+
+  " Set up puppet manifest and spec options
+  autocmd BufRead,BufNewFile *.pp set filetype=puppet
+  autocmd BufRead,BufNewFile *_spec.rb nmap <F8> :!rspec --color %<CR>
+
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType c set omnifunc=ccomplete#Complete
+
+  autocmd BufNewFile,BufRead *.scss set ft=scss.css
+  autocmd BufNewFile,BufRead *.sass set ft=sass.css
+
+  if has('ruby')
+    autocmd FileType ruby set omnifunc=rubycomplete#Complete
+    " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+  endif
+
+endif
+
+" Show $ at end of line and trailing space as ~
+set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
+
+" The following will make tabs and trailing spaces visible when requested
+set listchars=trail:.,tab:>-,eol:$
+set nolist

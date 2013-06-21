@@ -1,0 +1,5 @@
+/.bundle
+/Gemfile.lock
+/config/deploy.rb
+/assets/user/ssh/authorized_keys
+/TODO.md

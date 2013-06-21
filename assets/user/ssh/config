@@ -1,0 +1,8 @@
+Host *
+  HashKnownHosts yes
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials no
+  Compression yes
+  CompressionLevel 7
+  Cipher blowfish
+  ServerAliveInterval 600
