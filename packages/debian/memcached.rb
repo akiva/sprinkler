@@ -1,15 +1,13 @@
-require_relative '../generic/deployment_user'
-
 package :memcached do
-  description 'memcached package'
-  requires :deployment_user, :memcached_apt, :memcached_conf
+  description 'Memcached, a distributed memory object store'
+  requires :memcached_apt, :memcached_conf
 end
 
 package :memcached_apt do
-  user = fetch(:deployment_user)
-  apt 'memcached' do
-    pre :install, 'mkdir -p /var/log/memcached',
-                  "chown #{user}:#{user} -R /var/log/memcached"
+  user = fetch(:user)
+  apt 'memcached', sudo: true do
+    pre :install, 'sudo mkdir -p /var/log/memcached',
+                  "sudo chown #{user}:#{user} -R /var/log/memcached"
   end
 
   verify do
@@ -18,7 +16,7 @@ package :memcached_apt do
 end
 
 package :memcached_conf do
-  user = fetch(:deployment_user)
+  user = fetch(:user)
   config_file = '/etc/memcached.conf'
   config_text = %q[
 # memcached_conf via Sprinkle
@@ -31,8 +29,8 @@ logfile /var/log/memcached/memcached.log
 -l 127.0.0.1
 ].lstrip
 
-  push_text config_text, config_file do
-    pre :install, "rm -f #{config_file} && touch #{config_file}"
+  push_text config_text, config_file, sudo: true do
+    pre :install, "sudo rm -f #{config_file} && sudo touch #{config_file}"
   end
 
   verify do

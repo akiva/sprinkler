@@ -1,6 +1,6 @@
 package :svn, provides: :scm do
   description 'Subversion version control'
-  apt 'subversion'
+  apt 'subversion', sudo: true
 
   verify do
     has_executable 'svn'

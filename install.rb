@@ -5,6 +5,7 @@ directories = {
   assets: File.join(File.dirname(__FILE__), 'assets'),
 }
 
+# Allow for packages to be able to read Capistrano variables
 require File.join(directories[:config], 'capistrano_variables')
 
 # Policies list, default to "base"

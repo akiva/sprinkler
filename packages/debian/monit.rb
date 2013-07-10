@@ -1,4 +1,4 @@
 package :monit, provides: :monitoring do
   description 'Monit process monitoring'
-  apt 'monit'
+  apt 'monit', sudo: true
 end

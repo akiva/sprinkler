@@ -1,7 +1,7 @@
 package :ufw, provides: :firewall do
   description 'UFW Firewall'
 
-  apt 'ufw' do
+  apt 'ufw', sudo: true do
     post :install,
          'sudo ufw default deny',
          'sudo ufw allow 80',

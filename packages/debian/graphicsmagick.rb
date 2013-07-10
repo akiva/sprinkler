@@ -1,6 +1,6 @@
 package :graphicsmagick, provides: :image_processing do
   description 'GraphicsMagick image processing tools'
-  apt 'graphicsmagick'
+  apt 'graphicsmagick', sudo: true
 
   verify do
     has_apt 'graphicsmagick'

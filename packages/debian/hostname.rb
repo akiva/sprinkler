@@ -4,8 +4,8 @@ package :hostname do
   hostnamerc = '/etc/hostname'
   hostname = fetch(:hostname)
 
-  runner "echo '#{hostname}' > /etc/hostname"
-  runner "hostname -F /etc/hostname"
+  runner "echo '#{hostname}' | sudo tee -a /etc/hostname"
+  runner 'sudo hostname -F /etc/hostname'
 
   verify do
     file_contains hostnamerc, "^#{hostname}$"
@@ -17,7 +17,7 @@ package :hostname_in_etc_hosts do
   hostsrc = '/etc/hosts'
   hostname = fetch(:hostname)
   fqdn = fetch(:fqdn)
-  push_text "127.0.1.1 #{fqdn} #{hostname}", hostsrc
+  push_text "127.0.1.1 #{fqdn} #{hostname}", hostsrc, sudo: true
 
   verify do
     file_contains hostsrc, "^127.0.1.1 #{fqdn} #{hostname}$"

@@ -1,6 +1,6 @@
 package :vim do
-  description 'vim'
-  apt 'vim'
+  description 'Vi IMproved - enhanced vi editor'
+  apt 'vim', sudo: true
   requires :vimrc
 
   verify do
@@ -9,10 +9,10 @@ package :vim do
 end
 
 package :vimrc do
-  description 'Installs system-wide /etc/vimrc'
+  description 'Installs system-wide Vim config file'
   system_vimrc = '/etc/vim/vimrc.local'
   template = File.join(Dir.pwd, 'assets', 'vimrc')
-  transfer template, system_vimrc
+  transfer template, system_vimrc, sudo: true
 
   verify do
     has_file system_vimrc

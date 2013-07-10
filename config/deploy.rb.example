@@ -1,10 +1,10 @@
-role :app, "hostname:ssh_port"
-
-# Fill user in - if remote user is different than your local user
-# set :user, 'vagrant'
-# set :password, 'vagrant'
-
-set :ruby_version, '1.9.3-p286'
+server '', :app, :web, :db, primary: true
+set :user, 'username'
+set :use_sudo, true
+set :hostname, 'hostname'
+set :fqdn, 'hostname.domain.tld'
+set :ruby_version, '2.0.0-p0'
+set :new_relic_license_key, '123456790abcdef'
 
 # Make capistrano variables accessible to Sprinkle
 # https://github.com/sprinkle-tool/sprinkle/issues/57
