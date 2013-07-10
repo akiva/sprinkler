@@ -1,6 +1,6 @@
 package :logrotate do
-  description 'logrotate for automated log management'
-  apt 'logrotate'
+  description 'Logrotate for automated log management'
+  apt 'logrotate', sudo: true
   requires :logrotate_logs
 
   verify do
@@ -9,22 +9,23 @@ package :logrotate do
 end
 
 package :logrotate_logs do
+  description 'Logrotate configuration for hosted apps'
   config_file = '/etc/logrotate.d/app'
   config_text = %q[
-    /srv/http/*/shared/log/*.log {
-      rotate 30
-      daily
-      missingok
-      notifempty
-      compress
-      delaycompress
-      copytruncate
-    }
-  ].lstrip
+/srv/http/*/shared/log/*.log {
+  rotate 30
+  daily
+  missingok
+  notifempty
+  compress
+  delaycompress
+  copytruncate
+}
+].lstrip
 
-  push_text config_text, config_file do
-    pre :install, "rm -f #{config_file} && touch #{config_file}"
-    post :install, "chmod 0644 #{config_file}"
+  push_text config_text, config_file, sudo: true do
+    pre :install, "sudo rm -f #{config_file} && sudo touch #{config_file}"
+    post :install, "sudo chmod 0644 #{config_file}"
   end
 
   verify do

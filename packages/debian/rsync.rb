@@ -1,6 +1,6 @@
 package :rsync do
-  description 'rsync'
-  apt 'rsync'
+  description 'Rsync'
+  apt 'rsync', sudo: true
 
   verify do
     has_apt 'rsync'

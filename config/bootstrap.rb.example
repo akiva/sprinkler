@@ -1,0 +1,10 @@
+role :server, ''
+set :user, 'root'
+set :password, 'üb3r133753kr17'
+set :deployment_user, 'deployer'
+set :deployment_user_password, 'password'
+set :include_ssh_authorized_keys, true
+
+# Make capistrano variables accessible to Sprinkle
+# https://github.com/sprinkle-tool/sprinkle/issues/57
+Sprinkle::Package::Package.set_variables = self.variables

@@ -1,6 +1,6 @@
 package :tmux, provides: :multiplexer do
   description 'TMUX multiplexer'
-  apt 'tmux'
+  apt 'tmux', sudo: true
 
   verify do
     has_apt 'tmux'

@@ -1,5 +1,6 @@
 package :htop do
-  apt 'htop'
+  description 'htop interactive processes viewer'
+  apt 'htop', sudo: true
 
   verify do
     has_executable 'htop'

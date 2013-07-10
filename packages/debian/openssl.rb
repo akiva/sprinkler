@@ -1,6 +1,6 @@
 package :openssl do
   description 'OpenSSL'
-  apt 'openssl'
+  apt 'openssl', sudo: true
 
   verify do
     has_apt 'openssl'

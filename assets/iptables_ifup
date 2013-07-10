@@ -1,2 +1,3 @@
 #!/bin/sh
+# Provided by Sprinkle
 /sbin/iptables-restore < /etc/iptables.up.rules

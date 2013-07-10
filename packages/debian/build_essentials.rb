@@ -1,22 +1,22 @@
 package :build_essentials do
   description 'Build tools'
 
-  apt 'build-essential' do
-    pre :install, 'aptitude update'
-    pre :install, 'locale-gen en_GB.UTF-8'
-    pre :install, '/usr/sbin/update-locale LANG=en_GB.UTF-8'
-    pre :install, 'aptitude safe-upgrade -y'
-    pre :install, 'aptitude full-upgrade'
+  apt 'build-essential', sudo: true do
+    pre :install, 'sudo aptitude update',
+                  'sudo locale-gen en_GB.UTF-8',
+                  'sudo /usr/sbin/update-locale LANG=en_GB.UTF-8',
+                  'sudo aptitude safe-upgrade -y',
+                  'sudo aptitude full-upgrade'
   end
 
-  pkgs = %w(
+  pkgs = %w[
     zlib1g-dev
     libssl-dev
     libreadline-dev
     libcurl4-openssl-dev
-  )
+  ]
 
-  apt pkgs
+  apt pkgs, sudo: true
 
   verify do
     has_apt 'build-essential'

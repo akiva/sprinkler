@@ -1,6 +1,6 @@
 package :sphinx, provides: :search do
-  description 'Fast standalone full-text SQL search engine'
-  apt 'sphinxsearch'
+  description 'Shinx is a fast standalone full-text SQL search engine'
+  apt 'sphinxsearch', sudo: true
   requires :sphinxbase_utils
 
   verify do
@@ -9,7 +9,8 @@ package :sphinx, provides: :search do
 end
 
 package :sphinxbase_utils do
-  apt 'sphinxbase-utils'
+  description 'Sphinx base utilities'
+  apt 'sphinxbase-utils', sudo: true
 
   verify do
     has_apt 'sphinxbase-utils'
